@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <h1>ES6의 Module</h1>
+  <script>
+    //1. Module이란? 애플리케이션을 구성하는 개별적인 요소로서, 재사용 가능한 코드 조각을 말한다.
+    //2. 모듈은 기능을 중심으로 파일 단위로 분리한다.
+    //3. ES6에서는 파일의 이름의 확장자를 mjs를 사용하기를 권장한다.
+    //4. 특징
+    //  1) 유지보수성
+    //  2) 재사용 가능성
+    //  3) 네임스페이스화
+    //5. ES6에서는 ESM(Ecma Script Module)이라고 한다.
+    //6. export, import keyword 사용
+    //7. export keyword
+    //  1) 자신만의 scope를 갖는다.
+    //  2) 따라서 모듈 내부에서 선언한 변수, 함수 등 모든 식별자는 모듈 외부에서 참조할 수 없다. -> private
+    //  3) 모듈 내부에서 선언한 식별자를 다른 모듈에서 재사용하게 하려면 export keyword를 사용한다. -> public
+    //  4) Syntax
+    //      export 변수 함수;
+    //8. import keyword
+    //  1) 다른 모듈에서 공개한 식별자를 자신의 모듈에서 로드하려면 import keyword를 사용한다.
+    //  2) Syntax
+    //      import { 불러올 함수이름, 변수이름 } from 경로;
+  </script>
+  <!-- <script type="module" src="JS/main.mjs">
+
+  </script> -->
+  <!-- 직접 사용 -->
+  <script type="module">
+    import {log, error, MIN_VALUE} from './JS/log.mjs';
+
+    log('Hello, World');
+    error( 'Good Afternoon' );
+  </script>
+</body>
+</html>

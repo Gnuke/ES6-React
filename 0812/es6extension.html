@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <h1>ES6의 객체의 확장된 기능</h1>
+  <script>
+    //1. Property 초기화 단축(Property Initialzer Short-hand)
+    //ES5
+    // function func(name, age){
+    //   return{
+    //     name: name,
+    //     age: age
+    //   }
+    // }
+
+    //ES6
+    // function func(name, age){ 
+    //   return{
+    //     name, age
+    //   }
+    // }
+
+    //2. 간결한 메소드(Consice Method)
+    //ES5
+    // var person = {
+    //   name: 'Michael',
+    //   setName: function(){
+    //     console.log(this.name);
+    //   }
+    // }
+    //ES6
+    const person = {
+      name: 'Michael',
+      printName(){
+        console.log(this.name);
+      }
+    }
+    person.printName();
+  </script>
+</body>
+</html>
