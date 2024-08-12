@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <script> 
+    //1. ES6에서 새로 도입한 연산자(문법)
+    //2. ...은 하나로 뭉쳐있는 여러 값들의 집합을 펼쳐서( 전개하여 ) 개별적인 목록을 만든다.
+    //3. 스프레드 연산자는 Array, String, Map, Set, DOM Node List(DOM List Collection).
+    //    arguments와 같이 for...of문으로 순회할 수 있는 Iterable에만 사용가능
+
+    //ES5
+    //const array = [3,4,5];
+    //const v1 = array[0]; const v2 = array[1]; const v3 = array[2];
+    //ES6
+    // const[v1,v2,v3] = array;
+    // console.log(v1, v2, v3);
+
+    //4. 변수의 갯수와 Iterable의 갯수가 반드시 일치할 필요가 없다.
+    //const [v1, v2] = array;
+    //console.log( v1, v2 );
+    //[a,b = 0] = [1];
+    //console.log( a, b );
+
+    //5. 배열 디스트럭처링( 구조분해할당 ) 할당을 위한 변수에 rest parameter와 유사하게
+    //    rest요소 ...을 사용할 수 있다. 단, rest 요소는 반드시 마지막에 위치해야 한다.
+    //const [x, ...y] = [1,2,3, true, {name:'jimin'}];
+    //console.log(x,y);
+
+    const array1 = [1,2,3,4,5];
+    const array2 = [...array1, 6,7,8,9];
+    console.log( array2 );
+  </script> 
+</body>
+</html>

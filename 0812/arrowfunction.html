@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <script>
+    // const name = '한지민';
+    // function myfunc(name){  // Declarative / Static Function
+    //   return `이름 : ${name}`;
+    // }
+
+    // const myfunc1 = (name) => { // function literal, Array Function
+    //   return `이름 : ${name}`;
+    // }
+
+    // const myfunc2 = (name) => `이름 : ${name}`;
+
+    // console.log(myfunc(name));
+    // console.log(myfunc1(name));
+    // console.log(myfunc2(name));
+
+    // const get = param => ({sports : '축구'});
+    // const result = get;
+    // console.log( result() );
+
+    // const person = function(name){
+    //   return {
+    //     getName : function(){
+    //       return name;
+    //     }
+    //   }
+    // }( 'Michael' );
+    // console.log( typeof person );
+    // console.log(person.getName());
+
+    const person = (name => {
+      return{
+        getName : function(){
+          return name;
+        }
+      }
+    })( 'Sujan' );
+    console.log( typeof person );
+    console.log(person.getName());
+  </script>
+</body>
+</html>
