@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <h1>Default Function Parameter</h1>
+  <script>
+    //1. JavaScript에서는 함수의 매개변수의 기본값은 undefined이다.
+    //2. ES6의 Default Function Parameter를 사용하면 매개변수에 값을 전달하지 않았을 때 undefined로 처리되지 않고,
+    //    기본값으로 처리한다.
+    //3. Syntax
+    //function 함수이름(param1 = defaultValue1, [,...]){}
+    // function add(x,y){
+    //   console.log(x,y); //1 undefined
+    //   return x+y; //NaN
+    // }
+
+    // ES5
+    // function add(x,y){
+    //   x = x || 0;
+    //   y = y || 0;
+    //   console.log(x,y);
+    //   return x+y;
+    // }
+    // console.log(add(1));  // 1  0 ==> 1
+    // console.log(add(1,null)); // 1  0 ==> 1
+    // console.log(add(1, undefined)); // 1  0 ==> 1
+
+    // ES6
+    // function add( x = 0, y = 0 ){
+    //   console.log(x,y);
+    //   return x+y;
+    // }
+    // console.log( add(1) );  //1 0
+    // console.log( add(1,null) ); //1 null
+    // console.log( add(1,undefined) );  //1 0
+    // console.log( add(1, 2) ); //1 2
+
+    //4. Rest Parameter는 매개변수 기본값을 지정할 수 없다.
+    function add(...args){
+      console.log(args);
+    }
+    console.log(add(1));
+    console.log(add(1, undefined));
+    console.log(add(1, 2));
+  </script>
+</body>
+</html>

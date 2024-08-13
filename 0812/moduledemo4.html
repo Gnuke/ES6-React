@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>■■■Cloud-Native Based DevOps Engineer Course■■■</title>
+</head>
+<body>
+  <!-- <script type="module" src="./JS/app.mjs"></script> -->
+  <script type="module">
+    import { add } from  './JS/example.js';
+    console.log(add(4,9));
+    //add = 1; // Type error : add ==> constant
+
+    import { subtract } from  './JS/example.js';
+    //SyntaxError: The requested module './JS/example.js' does not provide an export named 'subtract'
+  </script>
+</body>
+</html>
