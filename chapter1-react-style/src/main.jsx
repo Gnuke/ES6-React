@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
+//기본설정은 여기에...
 createRoot(document.getElementById('root')).render(
-  //Strict 삭제 0813
   <App />
 )
