@@ -17,8 +17,13 @@ export default function List() {
   return (
     <div>
       <h3>상세페이지</h3>
-      for(lists l of list){
-        list.num
+      {
+        list.map((item) => (
+          <li>
+            {item.num} /
+            {item.title} /
+          </li>
+        ))
       }
     </div>
   )
