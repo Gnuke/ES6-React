@@ -6,6 +6,7 @@ export default function Myinfo() {
   const token = localStorage.getItem('token');
   const [dto, setDto] = useState({});
   const { id, pwd, type } = dto;
+
   // 컴포넌트가 렌더링 할 때 마다 실행되는 함수
   // 처음 한번만 실행하려면, 빈 배열을 넣어주면 됨 = window.onload()
   useEffect(() => {
