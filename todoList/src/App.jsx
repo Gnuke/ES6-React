@@ -1,12 +1,15 @@
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Insert from './components/todo/Insert'
+import Router from './Router'
 
 function App() {
 
   return (
-    <>
-      <Insert />
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </div>
   )
 }
 
