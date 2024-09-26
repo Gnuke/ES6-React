@@ -42,7 +42,7 @@ export default function List() {
           ))}
         </tbody>
       </table>
-      <button><Link to="/Insert">할 일 작성</Link></button>
+      <button><Link to="/todo/add">할 일 작성</Link></button>
     </div >
   )
 }

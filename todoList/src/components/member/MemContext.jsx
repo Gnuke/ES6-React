@@ -40,9 +40,10 @@ export const MemProvider = ({children}) => {
                 }
                 else if(res.data.myInfo !== null){
                     alert('login 성공');
-                    //console.log( res.data );
-                    //localStorage.setItem('token', res.data.token);
+                    localStorage.setItem('token', res.data.token);
                     //localStorage.setItem('myInfo', res.data.myInfo);
+                    //console.log(localStorage.getItem('myInfo'));
+                    //navigate('/todo')
                 }else{
                     alert('아이디 또는 비밀번호가 존재하지 않습니다.')
                 }

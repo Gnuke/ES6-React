@@ -29,7 +29,7 @@ export default function List() {
             <tr key={item.num}>
               <td>{item.num}</td>
               <td>{item.writer.id}</td>
-              <td><Link to={"/board/edit/" + item.num}>{item.ptext ? item.ptext : "No Text"}</Link></td>
+              <td><Link to={"/board/edit" + item.num}>{item.ptext ? item.ptext : "No Text"}</Link></td>
               <td>
                 <img src={'http://localhost:8082/read-img/' + item.img} className="simg" alt="" />
               </td>

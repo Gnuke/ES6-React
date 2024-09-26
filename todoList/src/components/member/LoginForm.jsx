@@ -16,30 +16,6 @@ export default function LoginForm(){
         })
     }
 
-    // const login = () => {
-    //     axios.post('http://localhost:8082/login', {}, {
-    //         params: {
-    //             id: id,
-    //             pwd: pwd
-    //         }
-    //     }).then(function (res) {
-    //         if (res.status === 200) {
-    //             if (res.data.flag) {
-    //                 alert('login 성공');
-    //                 localStorage.setItem('token', res.data.token);
-    //                 localStorage.setItem('loginId', res.data.dto.id);
-    //                 localStorage.setItem('type', res.data.dto.type);
-    //                 console.log(localStorage);
-    //                 navigate('/');
-    //             } else {
-    //                 alert('login 실패');
-    //             }
-    //         } else {
-    //             alert('비정상 응답');
-    //         }
-    //     });
-    // }
-
     const onSubmit = (e) => {
         e.preventDefault();
         login(inputs);
