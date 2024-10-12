@@ -1,0 +1,54 @@
+.header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: rgb(66, 197, 66);
+}
+
+.contents{
+    display: flex;
+    max-width: 95%;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation{
+    ul {
+        display: flex;
+        align-items: center; /* ul 안의 항목을 수직 중앙 정렬 */
+        list-style: none;
+        margin: 0; /* 불필요한 여백 제거 */
+        padding: 0;
+    }
+
+    li {
+        display: flex; /* li를 플렉스 컨테이너로 설정 */
+        align-items: center; /* li 안의 내용을 수직 중앙 정렬 */
+    }
+
+    li + li{
+        margin-left: 30px;
+    }
+}
+
+.logo {
+    width: 70px; /* 헤더 높이와 동일하게 설정 */
+    height: 70px;
+    border-radius: 50%; /* 둥근 모양으로 설정 */
+    background-color: white; /* 하얀 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 로고 이미지가 넘치지 않도록 설정 */
+}
+
+.logo img {
+    width: 80%; /* 이미지 크기 조절 (필요에 따라 조정) */
+    height: 80%;
+    object-fit: contain; /* 이미지가 로고 영역에 맞게 들어가도록 */
+}

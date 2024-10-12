@@ -1,12 +1,14 @@
 import {createContext, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import memStore from "../store/memStore.jsx";
 
 export const MemContext = createContext();
 
 export const MemProvider = ({children}) => {
     const navigate = useNavigate();
     const [members, setMembers] = useState([]);
+    const { setMemberInfo } = memStore()
 
     const join = (inputs) => {
         setMembers([...members, inputs]);
@@ -35,8 +37,7 @@ export const MemProvider = ({children}) => {
         }).then(function(res){
             if(res.status === 200){
                 if(res.data.flag){
-                    //console.log(res.data.memberInfo.uid);
-                    localStorage.setItem("loginId", res.data.memberInfo.uid);
+                    setMemberInfo(res.data.memberInfo);
                 }else{
                     alert("로그인 실패");
                 }

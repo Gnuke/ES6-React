@@ -21,17 +21,19 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h4>login</h4>
-            <form onSubmit={onSubmit}>
-                ID : <input type="text" name="id" value={inputs.id} onChange={onChange}/><br/>
-                PWD : <input type="password" name="pwd" value={inputs.pwd} onChange={onChange}/><br/>
-                <button type="submit">login</button>
-                &nbsp;
-                <Link to="/member/join">
-                    <button>Join</button>
-                </Link>
-            </form>
+        <div className="loginWrapper">
+            <div className="loginBox">
+                <h2>Sign In</h2>
+                <form onSubmit={onSubmit}>
+                    ID : <input type="text" name="id" value={inputs.id} onChange={onChange}/><br/>
+                    PWD : <input type="password" name="pwd" value={inputs.pwd} onChange={onChange}/><br/>
+                    <button type="submit">Sign-In</button>
+                    &nbsp;
+                    <Link to="/member/join">
+                        <button>Join</button>
+                    </Link>
+                </form>
+            </div>
         </div>
     );
 };
