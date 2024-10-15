@@ -11,8 +11,10 @@
 
 main{
   flex: 1;
-  min-height: calc(100vh - 224px);
-  margin-top: 80px;
+  min-height: calc(100vh - 144px);
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center;
 }
 
 .loginWrapper {
@@ -48,4 +50,12 @@ main{
 
 .loginBox button:hover {
   background-color: #45a049;
+}
+
+.boardContents {
+  width: 250px;               /* 원하는 너비 설정 */
+  text-align: left;          /* 내용은 왼쪽 정렬 */
+  background-color: #f0f0f0; /* 배경색 등 추가 스타일 */
+  padding: 20px;            /* 적절한 padding 추가 */
+  border-radius: 8px;       /* 모서리를 둥글게 (선택 사항) */
 }
