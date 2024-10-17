@@ -4,7 +4,7 @@ import memStore from "../../store/memStore.jsx";
 import {useNavigate} from "react-router-dom";
 
 const Header = () => {
-    const {memberInfo, clearMemberInfo} = memStore();
+    const {userId, clearMemberInfo, token} = memStore();
     const navigate = useNavigate();
 
     const signout = () => {
@@ -14,7 +14,7 @@ const Header = () => {
     };
 
     const myinfo = () => {
-        navigate('/member/myinfo', {state: {memberInfo}});
+        navigate('/member/myinfo', {state: {token}});
     }
 
     return (
@@ -25,7 +25,7 @@ const Header = () => {
                 </div>
                 <nav className={styles.navigation}>
                     <ul>
-                        <li>{memberInfo.uid}님 환영합니다.</li>
+                        <li>{userId.sub}님 환영합니다.</li>
                         <li>
                             {location.pathname !== '/member/myinfo' && (
                                 <button onClick={myinfo}>내정보</button>

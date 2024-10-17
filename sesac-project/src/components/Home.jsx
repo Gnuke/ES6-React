@@ -4,11 +4,11 @@ import memStore from "./store/memStore.jsx";
 import Socsac from "./boards/Socsac.jsx";
 
 const Home = () => {
-    const {memberInfo} = memStore();
+    const {token} = memStore();
 
     return(
         <>
-            {memberInfo ? <Socsac /> : <Login />}
+            {token ? <Socsac /> : <Login />}
         </>
     )
 };

@@ -11,10 +11,10 @@ import MyInfo from "./components/member/MyInfo.jsx";
 import Write from "./components/boards/freeboard/Write.jsx";
 
 const Router = () => {
-    const {memberInfo} = memStore()
+    const {token} = memStore()
     return (
         <>
-            {memberInfo && <Header />}
+            {token && <Header />}
             <main>
                 <Routes>
                     <Route path="/" element={<Home />}/>
@@ -25,7 +25,7 @@ const Router = () => {
                     <Route path="/boards/freeboard/write" element={<Write />} />
                 </Routes>
             </main>
-            {memberInfo && <Footer />}
+            {token && <Footer />}
         </>
     );
 };
