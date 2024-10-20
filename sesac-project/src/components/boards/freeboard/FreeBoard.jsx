@@ -4,24 +4,34 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 
 const FreeBoard = () => {
-    const {memberInfo} = memStore();
+    const {token} = memStore();
     const [list, setList] = useState();
 
     useEffect(() => {
-        axios.get('http://localhost:8081/freeboard')
-            .then(function(res){
-                if(res.status === 200){
-                    if(res.data.list && res.data.list.length > 0){
-                        setList(res.data.list);
-                    }else{
-                        setList([]);
+        axios.get('http://localhost:8081/api/board/freeboard', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(function(res) {
+                if (res.status === 200) {
+                    if (res.data && res.data.list && res.data.list.length > 0) {
+                        // 데이터가 있을 때
+                        setList(res.data.list);  // 데이터를 상태에 저장
+                    } else {
+                        // 데이터가 없을 때
+                        setList([]);  // 빈 리스트 설정
+                        console.log("등록된 게시글이 없습니다");
                     }
+                } else {
+                    console.log("비정상 응답");
                 }
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 console.error("데이터 로드 중 오류 발생:", error);
             });
     }, []);
+
 
     return (
         <div>
@@ -30,9 +40,9 @@ const FreeBoard = () => {
                 {list && list.length > 0 ? (
                     list.map((item, index) => (
                         <div key={index} className="card">
-                            <h4>{item.title}</h4>
-                            <p>작성자: {item.writer}</p>
-                            <p>작성일: {item.createdAt}</p>
+                            <h4>{item.num}</h4>
+                            <p>제목: {item.title}</p>
+                            <p>작성일: {item.wdate}</p>
                         </div>
                     ))
                 ) : (
