@@ -42,7 +42,6 @@ const MyComponent = () => {
     },[]);
 
     const handleDeleteAccount = (check) => {
-        console.log('입력된 비밀번호:', check);
         axios.post('http://localhost:8081/api/member/check-password',
             { check: check }, // 비밀번호만 바디로 전송
             {
@@ -78,6 +77,10 @@ const MyComponent = () => {
             navigate("/");
         }
     }, [token, navigate]);
+
+    const cancel = () =>{
+        navigate("/");
+    }
     
     return (
         <div className="boardContents">
@@ -87,7 +90,8 @@ const MyComponent = () => {
                     <p>이메일: {email}</p>
                     <p>가입일: {joinDate}</p>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <button onClick={() => setIsModalOpen(true)}>회원 탈퇴</button>
+                        <button onClick={() => setIsModalOpen(true)}>회원 탈퇴</button>&nbsp;
+                        <button onClick={cancel}>취소</button>
                     </div>
                     {isModalOpen && <PasswordModal onSubmit={handleDeleteAccount} onCancel={handleCancel} />}
                 </>

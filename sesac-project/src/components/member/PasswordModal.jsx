@@ -11,7 +11,7 @@ const PasswordModal = ({ onSubmit, onCancel }) => {
     const [check, setCheck] = useState('');
 
     const handleSubmit = () => {
-        if (check) {
+        if (check.trim()) {
             onSubmit(check);
         } else {
             alert('비밀번호를 입력하세요.');

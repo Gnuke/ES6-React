@@ -4,13 +4,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Write = () => {
-    const { memberInfo } = memStore();
-    const uid = memberInfo.uid;
+    const { token , userId } = memStore();
     const navigate = useNavigate();
 
     // 입력값을 관리하기 위한 상태
     const [inputs, setInputs] = useState({
-        uid: uid,
+        uid: userId,
         title: '',
         content: ''
     });
@@ -29,20 +28,35 @@ const Write = () => {
         e.preventDefault();  // 페이지 새로고침 방지
 
         // 서버로 POST 요청
-        axios.post('http://localhost:8081/freeboard/write', {
-            uid: uid,       // localStorage에서 가져온 사용자 uid
+        axios.post('http://localhost:8081/api/board/write', {
             title: inputs.title,       // 입력된 제목
             content: inputs.content    // 입력된 내용
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`  // 인증 토큰을 올바르게 헤더에 추가
+            }   // 입력된 내용
         }).then((res) => {
             if (res.status === 200) {
-                // alert("글이 성공적으로 작성되었습니다.");
-                // navigate("/boards/freeboard");  // 작성 후 자유게시판으로 이동
-                console.log("정상응답");
+                if(res.data.flag){
+                    alert("게시글이 성공적으로 작성되었습니다.");
+                    navigate("/boards/freeboard");
+                }
             }
         }).catch((error) => {
             console.error("글 작성 중 오류 발생:", error);
             alert("오류가 발생했습니다. 다시 시도해주세요.");
         });
+    };
+
+    const handleCancel = (e) => {
+        e.preventDefault(); // 폼 제출 방지
+        e.stopPropagation(); // 이벤트 버블링 중단
+        setInputs({
+            // 초기값으로 설정
+            title: '',
+            content: ''
+        });
+        navigate("/boards/freeboard");
     };
 
     return (
@@ -54,13 +68,14 @@ const Write = () => {
                     name="title"
                     value={inputs.title}
                     onChange={handleChange}
-                /><br /><br />
+                /><br/><br/>
                 내용 : <textarea
                     name="content"
                     value={inputs.content}
                     onChange={handleChange}
-                /><br />
+                /><br/>
                 <button type="submit">작성</button>
+                <button onClick={handleCancel}>취소</button>
             </form>
         </div>
     );

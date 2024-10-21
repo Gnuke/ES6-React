@@ -9,6 +9,8 @@ import Footer from "./components/layouts/footer/Footer.jsx";
 import FreeBoard from "./components/boards/freeboard/FreeBoard.jsx";
 import MyInfo from "./components/member/MyInfo.jsx";
 import Write from "./components/boards/freeboard/Write.jsx";
+import Detail from "./components/boards/freeboard/Detail.jsx";
+import Edit from "./components/boards/freeboard/Edit.jsx";
 
 const Router = () => {
     const {token} = memStore()
@@ -23,6 +25,8 @@ const Router = () => {
                     <Route path="/member/myinfo" element={<MyInfo />} />
                     <Route path="/boards/freeboard" element={<FreeBoard />} />
                     <Route path="/boards/freeboard/write" element={<Write />} />
+                    <Route path="/boards/freeboard/:num" element={<Detail />} />
+                    <Route path="/boards/freeboard/edit/:num" element={<Edit />} />
                 </Routes>
             </main>
             {token && <Footer />}

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./Header.module.css"
+import styles from "../../styles/Header.module.css"
 import memStore from "../../store/memStore.jsx";
 import {useNavigate} from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className={styles.contents}>
                 <div className={styles.logo}>
-                    <img src="src/images/logo.png"/>
+                    <img src="/images/logo.png" className={styles.logo}/>
                 </div>
                 <nav className={styles.navigation}>
                     <ul>
