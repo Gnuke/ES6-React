@@ -62,8 +62,10 @@ const Edit = () => {
         })
             .then((res) => {
                 if (res.status === 200) {
-                    alert("게시글이 수정되었습니다.");
-                    navigate(`/boards/freeboard/${num}`);  // 수정 후 상세 페이지로 이동
+                    if(res.data.flag){
+                        alert("게시글이 수정되었습니다.");
+                        navigate(`/boards/freeboard/${num}`);
+                    }// 수정 후 상세 페이지로 이동
                 } else {
                     console.log("게시글 수정 실패");
                 }
