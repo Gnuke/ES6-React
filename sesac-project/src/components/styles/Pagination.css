@@ -1,0 +1,48 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+    justify-content: center;
+}
+
+.page-number, .page-arrow {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #555;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-number:hover, .page-arrow:hover:not(.disabled) {
+    background-color: #f0f0f0;
+}
+
+.page-number.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.page-arrow.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+
+/* 페이지네이션 버튼 스타일 */
+.pagination button {
+    background-color: #e7e7e7;
+    color: #333;
+    padding: 8px 12px;
+
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination button.active, .pagination button:hover {
+    background-color: #4CAF50;
+    color: white;
+}

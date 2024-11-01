@@ -1,0 +1,26 @@
+.socsac-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .socsac-container 내에서만 적용될 버튼 스타일 */
+.socsac-container button {
+    width: 40%;
+    background-color: #3ADF00;
+    font-weight: 550;
+    font-size: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    border: none;
+}
+
+/* 버튼 내 이미지 스타일 */
+.socsac-container button img {
+    margin-right: 10px;
+}
