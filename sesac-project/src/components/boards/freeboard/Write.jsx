@@ -28,7 +28,7 @@ const Write = () => {
         e.preventDefault();  // 페이지 새로고침 방지
 
         // 서버로 POST 요청
-        axios.post('http://localhost:8081/api/board/write', {
+        axios.post('http://localhost:8081/api/freeboard/write', {
             title: inputs.title,       // 입력된 제목
             content: inputs.content    // 입력된 내용
         }, {

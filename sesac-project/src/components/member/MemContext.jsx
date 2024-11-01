@@ -52,6 +52,11 @@ export const MemProvider = ({children}) => {
             }
         })
     }
+
+    // const socialLogin = () => {
+    //
+    // }
+
     return(
         <MemContext.Provider value={{ members, join, login }}>
             {children}

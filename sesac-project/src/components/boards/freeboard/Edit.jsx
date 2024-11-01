@@ -13,7 +13,7 @@ const Edit = () => {
 
     // 게시글 가져오기
     useEffect(() => {
-        axios.get(`http://localhost:8081/api/board/${num}`, {
+        axios.get(`http://localhost:8081/api/freeboard/${num}`, {
             headers: {
                 Authorization: `Bearer ${token}`  // 인증 토큰을 헤더에 포함
             }
@@ -51,7 +51,7 @@ const Edit = () => {
     const handleSubmit = (check) => {
         setIsModalOpen(false);  // 모달 닫기
 
-        axios.put(`http://localhost:8081/api/board/edit/${num}`, {
+        axios.put(`http://localhost:8081/api/freeboard/edit/${num}`, {
             title: inputs.title,
             content: inputs.content,
             check: check  // 모달에서 받은 비밀번호를 함께 전송

@@ -15,6 +15,12 @@ main{
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
   align-items: center;
+  width: auto;
+  min-width: 1000px;
+}
+
+div{
+  width: 100%;
 }
 
 .loginWrapper {
@@ -58,4 +64,20 @@ main{
   background-color: #f0f0f0; /* 배경색 등 추가 스타일 */
   padding: 20px;            /* 적절한 padding 추가 */
   border-radius: 8px;       /* 모서리를 둥글게 (선택 사항) */
+}
+
+/* socialLoginBtn에 스타일을 추가 */
+#socialLoginBtn {
+  background-color: #4285F4; /* 구글 로그인과 유사한 색상 */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#socialLoginBtn:hover {
+  background-color: #357ae8; /* hover 시 색상 변경 */
 }

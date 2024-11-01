@@ -12,7 +12,7 @@ const Detail = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:8081/api/board/' + num,{
+        axios.get('http://localhost:8081/api/freeboard/' + num,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -34,7 +34,7 @@ const Detail = () => {
 
     // 삭제
     const handleDelete = (check) => {
-        axios.delete(`http://localhost:8081/api/board/delete/${num}`, {
+        axios.delete(`http://localhost:8081/api/freeboard/delete/${num}`, {
             headers: {
                 Authorization: `Bearer ${token}`  // 토큰을 헤더에 포함
             },

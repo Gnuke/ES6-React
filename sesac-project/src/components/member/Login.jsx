@@ -33,6 +33,8 @@ const Login = () => {
                         <button>Join</button>
                     </Link>
                 </form>
+                {/*<br />*/}
+                {/*<button id="socialLoginBtn">social login</button>*/}
             </div>
         </div>
     );
