@@ -2,7 +2,7 @@ import {create} from "zustand";
 import axios from "axios";
 import "../styles/Pagination.css"
 
-const pageStore = create((set, get) => ({
+const readStore = create((set, get) => ({
     page: 1, // 현재 페이지 초기값 ( 1로 시작할 수 있도록 )
     size: 10, // 한 페이지에서 보일 data 수
     boardId: null, // 보드 구분하기 위한 파라미터
@@ -22,8 +22,7 @@ const pageStore = create((set, get) => ({
         const token = JSON.parse(localStorage.getItem('token'));
 
         if (!token) {
-            console.error("토큰이 유효하지 않습니다. 다시 로그인해주세요.");
-            return null;
+            alert("토큰이 유효하지 않습니다. 다시 로그인해주세요.");
         }
 
         try {
@@ -111,4 +110,4 @@ const pageStore = create((set, get) => ({
     },
 }));
 
-export default pageStore;
+export default readStore;

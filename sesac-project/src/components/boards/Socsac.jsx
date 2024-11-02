@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import "../styles/Socsac.css";
-import useNavigationStore from "../store/socsacStore.jsx";
+import useNavigationStore from "../store/navigationStore.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Socsac = () => {

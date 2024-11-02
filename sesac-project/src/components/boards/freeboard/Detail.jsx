@@ -7,7 +7,7 @@ import PasswordModal from "../../member/PasswordModal.jsx";
 const Detail = () => {
     const { num } = useParams();
     const [dto, setDto] = useState(null);
-    const {token, userId} = memStore();
+    const {token} = memStore();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,11 +62,11 @@ const Detail = () => {
                     <>
                         <h2>제목: {dto.title}</h2>
                         <p>내용: {dto.content}</p>
-                        <p>작성자: {dto.udtos.uid}</p>
+                        <p>작성자: {dto.uid}</p>
                         <p>작성일: {dto.wdate}</p>
 
                         <div>
-                            {dto.udtos.uid === userId.sub && (
+                            {dto.uid === userId.sub && (
                                 <>
                                     <Link to={`/boards/freeboard/edit/${num}`}>
                                         <button>수정</button>

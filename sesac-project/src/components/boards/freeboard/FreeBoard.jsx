@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import pageStore from "../../store/pageStore.jsx";
+import readStore from "../../store/readStore.jsx";
 import "../../styles/Board.css";
 
 const FreeBoard = () => {
@@ -12,7 +12,7 @@ const FreeBoard = () => {
         fetchPageData,
         Pagination,
         list
-    } = pageStore();
+    } = readStore();
 
     useEffect(() => {
         // 페이지네이션 초기 설정
@@ -52,7 +52,7 @@ const FreeBoard = () => {
                             <tr key={index} onClick={() => handleRowClick(item.num)} style={{ cursor: 'pointer' }}>
                                 <td>{item.num}</td>
                                 <td>{item.title}</td>
-                                <td>{item.udtos.uid}</td>
+                                <td>{item.uid}</td>
                                 <td>{item.wdate}</td>
                             </tr>
                         ))}
