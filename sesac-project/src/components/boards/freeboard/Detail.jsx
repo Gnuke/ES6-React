@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Link, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import memStore from "../../store/memStore.jsx";
@@ -7,9 +7,15 @@ import PasswordModal from "../../member/PasswordModal.jsx";
 const Detail = () => {
     const { num } = useParams();
     const [dto, setDto] = useState(null);
-    const {token} = memStore();
+    const {token, getUserInfo} = memStore();
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    // useState + useEffect 대신 useMemo 사용
+    const userInfo = useMemo(() => {
+        return getUserInfo();
+    }, [getUserInfo]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/api/freeboard/' + num,{
@@ -66,7 +72,7 @@ const Detail = () => {
                         <p>작성일: {dto.wdate}</p>
 
                         <div>
-                            {dto.uid === userId.sub && (
+                            {dto.uid === userInfo.sub && (
                                 <>
                                     <Link to={`/boards/freeboard/edit/${num}`}>
                                         <button>수정</button>

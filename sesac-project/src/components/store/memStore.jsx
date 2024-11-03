@@ -6,9 +6,8 @@ const initialState = {
 };
 
 const memStore = create((set, get) => ({
-    // token: JSON.parse(localStorage.getItem('token')) || null,
-
     ...initialState,
+    timerId: null, // timerId를 상테에 저장해 토큰의 생명주기를 관리할 때 기존 타이머가 중복되지 않도록 관리하기 위한 변수
 
     setToken: (token) =>{
         try {
@@ -26,7 +25,9 @@ const memStore = create((set, get) => ({
     },
 
     clearMemberInfo:()=>{
-        set({token: null});
+        const timerId = get().timerId;
+        if (timerId) clearTimeout(timerId);  // timerId가 null이 아닌 경우만 clearTimeout() 호출 -> 타이머 해제
+        set({token: null, timerId: null});
         localStorage.removeItem('token');
     },
 
@@ -62,14 +63,16 @@ const memStore = create((set, get) => ({
             } else {
                 // 만료 시간까지 남은 시간만큼 타이머 설정
                 const timeRemaining = expirationTime - currentTime;
-                const timer = setTimeout(() => {
+                const timerId = setTimeout(() => {
                     alert("세션이 만료되었습니다. 다시 로그인해 주세요.");
                     clearMemberInfo();
                     navigate("/member/login");
                 }, timeRemaining);
 
+                set({timerId})
+
                 // 컴포넌트 언마운트 시 타이머 클리어
-                return () => clearTimeout(timer);
+                return () => clearTimeout(timerId);
             }
         }
     }

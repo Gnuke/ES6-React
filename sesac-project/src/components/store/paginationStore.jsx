@@ -2,50 +2,27 @@ import {create} from "zustand";
 import axios from "axios";
 import "../styles/Pagination.css"
 
-const readStore = create((set, get) => ({
+const paginationStore = create((set, get) => ({
     page: 1, // 현재 페이지 초기값 ( 1로 시작할 수 있도록 )
     size: 10, // 한 페이지에서 보일 data 수
-    boardId: null, // 보드 구분하기 위한 파라미터
     totalPages: 1, // 전체 페이지 수
     currentPage: 1, // 현재 페이지
-    list: [],
+    onPageChange: null, // 페이지 변경 시 실행할 콜백 함수
 
     setPage: (page) => set({ page, currentPage: page }),
     setSize: (size) => set({size}),
-    setBoardId: (boardId) => set({boardId}),
     setTotalPages: (totalPages) => set({totalPages}),
-    setList: (list) => set({ list }),
+    setOnPageChange: (callback) => set({ onPageChange: callback }), // 콜백 설정 함수 추가
 
-    fetchPageData: async () => { // 일단 freeboard pagination
-        const {boardId, page, size } = get();
-
-        const token = JSON.parse(localStorage.getItem('token'));
-
-        if (!token) {
-            alert("토큰이 유효하지 않습니다. 다시 로그인해주세요.");
-        }
-
-        try {
-            const res = await axios.get(`http://localhost:8081/api/${boardId}`, {
-                headers: {
-                  Authorization: `Bearer ${token}`
-                },
-                params: { page, size }
-            });
-            set({ currentPage: res.data.number + 1 }); // 페이지 번호는 0부터 시작
-            set({ totalPages: res.data.totalPages });
-            set({ list: res.data.content });
-            return res.data.content;
-        } catch (error) {
-            console.error("페이지 데이터를 가져오는 중 오류 발생:", error);
-            return null;
-        }
-    },
-
+    
     // updatePageData: 페이지 이동 후 데이터 업데이트
     updatePageData: async (action) => {
         await action();
-        await get().fetchPageData();
+        const { page, size, onPageChange } = get();
+        // 설정된 콜백이 있다면 실행
+        if (onPageChange) {
+            await onPageChange(page, size);
+        }
     },
 
     // 페이지 이동 함수들에서 updatePageData를 호출
@@ -110,4 +87,4 @@ const readStore = create((set, get) => ({
     },
 }));
 
-export default readStore;
+export default paginationStore;

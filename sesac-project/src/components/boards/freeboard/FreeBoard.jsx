@@ -1,35 +1,52 @@
 import React, {useEffect} from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import readStore from "../../store/readStore.jsx";
+import {Await, Link, useNavigate} from "react-router-dom";
+import paginationStore from "../../store/paginationStore.jsx";
 import "../../styles/Board.css";
+import boardStore from "../../store/boardStore.jsx";
 
 const FreeBoard = () => {
     const navigate = useNavigate();
 
+    const {setBoardId, fetchPageData, list,boardId} = boardStore();
     const {
-        setBoardId,
+        page,
+        size,
         setSize,
-        fetchPageData,
         Pagination,
-        list
-    } = readStore();
+        setOnPageChange,
+    } = paginationStore();
 
     useEffect(() => {
-        // 페이지네이션 초기 설정
-        setBoardId("freeboard");
-        setSize(5);
+            const initBoard = async () => {
+                // 페이지네이션 초기 설정
+                setBoardId("freeboard");
+                setSize(3);
 
-        fetchPageData().catch(error => {
-            console.error('데이터 로딩 실패:', error);
-        });
-    }, []);
+                // 페이지 변경 시 실행할 콜백 설정
+                setOnPageChange((page, size) => fetchPageData(page, size));
 
-    const handleCancel = () => {
+                try {
+                    await fetchPageData(page, size);
+                } catch (error) {
+                    console.error('데이터 로딩 실패:', error);
+                }
+            };
+
+            initBoard();
+
+            // 컴포넌트 언마운트 시 콜백 제거
+            return () => setOnPageChange(null);
+        }, [page,size]);
+
+    // home button, 나중에 상태관리에 들어갈 듯
+    const toHome = () => {
         navigate('/');
     };
 
     const handleRowClick = (num) => {
-        navigate(`/boards/freeboard/${num}`);
+        //console.log("현재 게시판 : " + boardId);
+        //게시글 넘버를 받아서 이동, 또한 상태관리에 들어갈 듯
+        navigate(`/boards/${boardId}/${num}`);
     };
 
     return (
@@ -66,7 +83,7 @@ const FreeBoard = () => {
 
                 <span>
                     <Link to="/boards/freeboard/write"><button>게시글 등록</button></Link>&nbsp;
-                    <button onClick={handleCancel}>홈으로</button>
+                    <button onClick={toHome}>홈으로</button>
                 </span>
             </div>
         </div>
