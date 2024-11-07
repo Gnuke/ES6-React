@@ -8,7 +8,7 @@ import Header from "./components/layouts/header/Header.jsx";
 import Footer from "./components/layouts/footer/Footer.jsx";
 import FreeBoard from "./components/boards/freeboard/FreeBoard.jsx";
 import MyInfo from "./components/member/MyInfo.jsx";
-import Write from "./components/boards/freeboard/Write.jsx";
+import Write from "./components/boards/freeboard/FreeboardWrite.jsx";
 import Detail from "./components/boards/freeboard/Detail.jsx";
 import Edit from "./components/boards/freeboard/Edit.jsx";
 

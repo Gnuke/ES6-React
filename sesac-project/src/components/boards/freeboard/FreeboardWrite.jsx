@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import memStore from "../../store/memStore.jsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import boardStore from "../../store/boardStore.jsx";
 
-const Write = () => {
-    const { token , userId } = memStore();
+const FreeboardWrite = () => {
+    const { token } = memStore();
+    const { setBoardId } = boardStore();
     const navigate = useNavigate();
+
+    setBoardId("freeboard");
 
     // 입력값을 관리하기 위한 상태
     const [inputs, setInputs] = useState({
-        uid: userId,
         title: '',
         content: ''
     });
@@ -81,4 +84,4 @@ const Write = () => {
     );
 };
 
-export default Write;
+export default FreeboardWrite;

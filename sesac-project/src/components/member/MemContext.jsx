@@ -43,7 +43,6 @@ export const MemProvider = ({children}) => {
             if(res.status === 200){
                 if(res.data.flag){
                     setToken(res.data.token);
-
                     alert("로그인 성공");
                     navigate('/');
                 }else{

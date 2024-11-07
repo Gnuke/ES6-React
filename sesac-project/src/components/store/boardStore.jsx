@@ -36,6 +36,14 @@ const BoardStore = create((set,get) => ({
         }
     },
 
+    // write 함수 작성 중
+    boardWrite: async (title, content, token) => {
+        console.log("-------------------------------------");
+        console.log( "title : " + title );
+        console.log( "content : " + content );
+        console.log( "token : " + token );
+    }
+
 }));
 
 export default BoardStore;
