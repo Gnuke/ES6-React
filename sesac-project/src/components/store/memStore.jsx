@@ -1,5 +1,6 @@
 import React from 'react';
 import {create} from "zustand";
+import axios from "axios";
 
 const initialState = {
     token: JSON.parse(localStorage.getItem('token')) || null,
@@ -8,6 +9,25 @@ const initialState = {
 const memStore = create((set, get) => ({
     ...initialState,
     timerId: null, // timerId를 상테에 저장해 토큰의 생명주기를 관리할 때 기존 타이머가 중복되지 않도록 관리하기 위한 변수
+
+    signIn: async (inputs) => {
+      try{
+          const res = await axios.post("http://localhost:8080/api/member/signin", {
+              uid: inputs.id,
+              pwd: inputs.pwd
+          })
+          if(res.status === 200){
+            const token = res.data.token;
+            return token;
+          }else{
+              console.log("실패데이터 : " + res.data.flag);
+              return "실패";
+          }
+      }catch(error){
+          console.error(error);
+          return error;
+      }
+    },
 
     setToken: (token) =>{
         try {

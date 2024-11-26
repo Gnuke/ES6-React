@@ -1,11 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
-import {MemContext} from "./MemContext.jsx";
+import useMemStore from "../hooks/useMemStore.jsx";
 
 const Login = () => {
     const [inputs, setInputs] = useState({id:'', pwd:''});
-
-    const {login} = useContext(MemContext);
+    const {signIn, setToken} = useMemStore();
 
     const onChange = (e) => {
         const{name, value} = e.target;
@@ -15,9 +14,15 @@ const Login = () => {
         })
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        login(inputs);
+        const result = await signIn( inputs );
+
+        if(result){
+            setToken(result);
+        }else{
+            console.log("로그인 실패");
+        }
     }
 
     return (
@@ -33,8 +38,6 @@ const Login = () => {
                         <button>Join</button>
                     </Link>
                 </form>
-                {/*<br />*/}
-                {/*<button id="socialLoginBtn">social login</button>*/}
             </div>
         </div>
     );

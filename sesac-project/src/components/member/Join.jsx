@@ -1,10 +1,8 @@
-import {useContext, useEffect, useState} from "react";
-import {MemContext} from "./MemContext.jsx";
+import {useEffect, useState} from "react";
 
 export default function Join(){
     const [inputs, setInputs] = useState({id:'', pwd:'', name:'', email:'', pwdCheck:''});
     const [checkMsg, setCheckMsg] = useState('');
-    const { join } = useContext(MemContext);
 
     // 비밀번호 확인 로직을 useEffect로 분리
     useEffect(() => {
@@ -34,8 +32,6 @@ export default function Join(){
             setCheckMsg("");
         }
         // 회원가입 로직 실행
-        join(inputs);
-        setInputs({ id: '', pwd: '', email: '', pwdCheck: '' });
     };
 
     return (

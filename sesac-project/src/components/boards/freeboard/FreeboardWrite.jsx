@@ -6,7 +6,7 @@ import boardStore from "../../store/boardStore.jsx";
 
 const FreeboardWrite = () => {
     const { token } = memStore();
-    const { setBoardId } = boardStore();
+    const { setBoardId, boardWrite } = boardStore();
     const navigate = useNavigate();
 
     setBoardId("freeboard");
@@ -28,27 +28,29 @@ const FreeboardWrite = () => {
 
     // 글 작성 버튼 클릭 시 호출
     const handleSubmit = (e) => {
-        e.preventDefault();  // 페이지 새로고침 방지
+        boardWrite(inputs, token);
 
-        // 서버로 POST 요청
-        axios.post('http://localhost:8081/api/freeboard/write', {
-            title: inputs.title,       // 입력된 제목
-            content: inputs.content    // 입력된 내용
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`  // 인증 토큰을 올바르게 헤더에 추가
-            }   // 입력된 내용
-        }).then((res) => {
-            if (res.status === 200) {
-                if(res.data.flag){
-                    alert("게시글이 성공적으로 작성되었습니다.");
-                    navigate("/boards/freeboard");
-                }
-            }
-        }).catch((error) => {
-            console.error("글 작성 중 오류 발생:", error);
-            alert("오류가 발생했습니다. 다시 시도해주세요.");
-        });
+        e.preventDefault();  // 페이지 새로고침 방지
+        //
+        // // 서버로 POST 요청
+        // axios.post('http://localhost:8081/api/freeboard/write', {
+        //     title: inputs.title,       // 입력된 제목
+        //     content: inputs.content    // 입력된 내용
+        // }, {
+        //     headers: {
+        //         Authorization: `Bearer ${token}`  // 인증 토큰을 올바르게 헤더에 추가
+        //     }   // 입력된 내용
+        // }).then((res) => {
+        //     if (res.status === 200) {
+        //         if(res.data.flag){
+        //             alert("게시글이 성공적으로 작성되었습니다.");
+        //             navigate("/boards/freeboard");
+        //         }
+        //     }
+        // }).catch((error) => {
+        //     console.error("글 작성 중 오류 발생:", error);
+        //     alert("오류가 발생했습니다. 다시 시도해주세요.");
+        // });
     };
 
     const handleCancel = (e) => {
